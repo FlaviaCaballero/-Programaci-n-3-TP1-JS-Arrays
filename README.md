@@ -1,2 +1,2 @@
-# Programacion 3-TP1-JS-Arrays
+# TP1 Programacion 3 
 Repositorio de trabajo grupal Programación 3
