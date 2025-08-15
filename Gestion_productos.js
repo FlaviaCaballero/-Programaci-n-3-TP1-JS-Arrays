@@ -5,7 +5,7 @@ nombre, precio y stock.*/
 productos = [
     { id: 1, nombre: "Portacelular", precio: 7000, cantidad: 30 },
     { id: 2, nombre: "Soporte notebook", precio: 20000, cantidad: 20 },
-    { id: 3, nombre: "Soporte tablet", precio: 15000, cantidad: 25 },
+    { id: 3, nombre: "Soporte tablet", precio: 15000, cantidad: 0 },
     { id: 4, nombre: "Llavero", precio: 3000, cantidad: 100 },
     { id: 5, nombre: "Portalapices", precio: 10000, cantidad: 15
     }
@@ -20,70 +20,72 @@ console.log("Longitud total del array productos:", productos.length);
 console.log("Nombre del segundo producto:", productos[1].nombre);
 console.log("Nombre del cuarto producto:", productos[3].nombre);
 
-
 // Recorrer el array productos e imprimir el nombre y el precio de cada elemento
 for (const producto of productos) {
-    console.log(`Nombre del elemento: ${producto.nombre}, Precio: ${producto.precio}`);
+    console.log(`Nombre del producto: ${producto.nombre}, Precio: ${producto.precio}`);
 }
 
-// Recorrer el array productos utilizando forEach e imprimir información descriptiva
+/*Recorre el array productos utilizando el método forEach() e imprimir la misma información que en el
+punto anterior, pero agregando una frase descriptiva (ej. "Producto: [nombre], Precio: [precio]").*/
+
 productos.forEach(producto => {
     console.log(`Información del producto: ${producto.nombre}, Precio del producto: ${producto.precio}`);
 });
 
-// Agregar dos nuevos productos al final del array
+// Agregar dos elementos al final del array productos utilizando push()
 productos.push(
-    { id: 6, nombre: "Soporte auricular de pared", precio: 15000, cantidad: 20 },
-    { id: 7, nombre: "Cortantes repostería", precio: 3000, cantidad: 100 }
+    { id: 6, nombre: "Soporte auricular", precio: 15000, cantidad: 20 },
+    { id: 7, nombre: " Cortante", precio: 3000, cantidad: 100 }
 );
 
-console.log("Productos agregados recientemente:", productos);
+console.log("Productos agregados al stock:", productos);
 
 // Eliminar el último producto del array usando pop()
 const productoEliminado = productos.pop();
 
-// Verificar el producto eliminado y el estado actual del array
 console.log("Producto eliminado:", productoEliminado);
 console.log("Productos actualizados:", productos);
 
-// Agregar un nuevo producto al inicio del array
-productos.unshift({ id: 0, nombre: "Porta llaves de escritorio", precio: 13000, cantidad: 15 });
+// Agregar un nuevo elemento al inicio del array productos utilizando unshift().
+productos.unshift({ id: 0, nombre: "Llavero desk", precio: 13000, cantidad: 15 });
 
-// Verificar que el producto fue agregado
 console.log("Productos agregados:", productos);
 
-// Eliminar el primer elemento del array PRODUCTOS usando shift()
+// Elimina el primer elemento del array productos utilizando shift().
 const primerProductoEliminado = productos.shift();
 
-// Verificar el producto eliminado y el estado actual del array
 console.log("Primer producto eliminado:", primerProductoEliminado);
 console.log("Listado actualizado de productos:", productos);
 
-// Crear un nuevo array con productos que tengan stock mayor a 0
+/* Crear un nuevo array llamado productosConStock que contenga solo los elementos del array productos
+donde el stock sea mayor que 0 utilizando filter(). */
+
 const productosConStock = productos.filter(producto => producto.cantidad > 0);
 
-// Verificar el nuevo array
 console.log("Productos con stock disponible:", productosConStock);
 
-// Crear un nuevo array con los nombres de todos los productos
+/*Crear un nuevo array llamado nombresProductos que contenga solo los nombres de todos los
+productos en el inventario utilizando map(). */
+
 const nombresProductos = productos.map(producto => producto.nombre);
 
-// Verificar el nuevo array
 console.log("Nombres de los productos:", nombresProductos);
 
-// Buscar el primer producto con un id específico (ej. id: 3)
+/*Encontrar y guardar en una variable el primer producto en productos que tenga un id específico (ej. id:3)
+utilizando find(). Si no lo encuentra, indicar que no existe. */
+
 const idBuscado = 5;
 const productoEncontrado = productos.find(producto => producto.id === idBuscado);
 
-// Verificar si se encontró el producto
 if (productoEncontrado) {
     console.log("Producto encontrado:", productoEncontrado);
 } else {
     console.log(`No existe un producto con id: ${idBuscado}`);
 }
 
-// Crear un nuevo array con los productos ordenados por precio en orden decreciente
+/*Crear un nuevo array llamado productosOrdenados que contenga los productos ordenados por precio
+en orden decreciente. (investigar método sort()).*/
+
 const productosOrdenados = [...productos].sort((a, b) => b.precio - a.precio);
 
-// Verificar el nuevo array
-console.log("Productos ordenados por precio (de mayor a menor):", productosOrdenados);
+console.log("Productos ordenados por precio en orden decreciente:", productosOrdenados);
